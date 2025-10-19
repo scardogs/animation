@@ -40,6 +40,8 @@
       text-transform: uppercase;
       text-shadow: 0 0 10px #0ff, 0 0 30px #f0f, 0 0 60px #0ff;
       animation: flicker 2.5s infinite alternate, glowPulse 4s infinite ease-in-out;
+      text-align: center;
+      margin-bottom: 2rem;
     }
 
     @keyframes flicker {
@@ -59,7 +61,7 @@
     }
 
     .subheading {
-      margin-top: 2rem;
+      margin-top: 1rem;
       color: #ff00ff;
       animation: textGlitch 3s infinite;
       text-align: center;
@@ -75,9 +77,9 @@
 
     .samurai {
       position: absolute;
-      top: 55%;
+      bottom: 10%; /* moved lower to not cover text */
       left: 50%;
-      transform: translate(-50%, -50%) scale(4);
+      transform: translateX(-50%) scale(4);
       width: 96px;
       height: 96px;
       background-repeat: no-repeat;
@@ -86,8 +88,8 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translate(-50%, -52%) scale(4); }
-      50% { transform: translate(-50%, -48%) scale(4.1); }
+      0%, 100% { transform: translateX(-50%) translateY(0) scale(4); }
+      50% { transform: translateX(-50%) translateY(-10px) scale(4.1); }
     }
 
     .samurai.idle {
@@ -121,10 +123,10 @@
     }
 
     @keyframes shake {
-      0%, 100% { transform: translate(-50%, -50%) scale(4); }
-      25% { transform: translate(-49%, -51%) scale(4); }
-      50% { transform: translate(-51%, -49%) scale(4); }
-      75% { transform: translate(-50%, -52%) scale(4); }
+      0%, 100% { transform: translateX(-50%) translateY(0) scale(4); }
+      25% { transform: translateX(-48%) translateY(-2px) scale(4); }
+      50% { transform: translateX(-52%) translateY(2px) scale(4); }
+      75% { transform: translateX(-50%) translateY(-4px) scale(4); }
     }
 
     @keyframes flash {
@@ -132,7 +134,7 @@
       to { filter: brightness(0.8); }
     }
 
-    /* CRT screen flicker */
+    /* CRT flicker effect */
     body::after {
       content: "";
       position: absolute;
@@ -176,11 +178,11 @@
 
         switch (ev.key) {
           case "d":
-            samurai.style.transform = "translate(-50%, -50%) scaleX(4) scaleY(4)";
+            samurai.style.transform = "translateX(-50%) scaleX(4) scaleY(4)";
             samurai.classList.add("run");
             break;
           case "a":
-            samurai.style.transform = "translate(-50%, -50%) scaleX(-4) scaleY(4)";
+            samurai.style.transform = "translateX(-50%) scaleX(-4) scaleY(4)";
             samurai.classList.add("run");
             break;
           case "k":
